@@ -3,7 +3,7 @@ import tensorflow as tf
 # The export path contains the name and the version of the model
 tf.keras.backend.set_learning_phase(0)  # Ignore dropout at inference
 model = tf.keras.models.load_model('./inception.h5')
-export_path = '../my_image_classifier/1'
+export_path = '/content/keras-serving/my_image_classifier/1'
 
 # Fetch the Keras session and save the model
 # The signature definition is defined by the input and output tensors
