@@ -13,10 +13,10 @@ args = vars(ap.parse_args())
 
 image_path = args['image']
 # Preprocessing our input image
-img = image.img_to_array(image.load_img(image_path, target_size=(224, 224))) / 255.
-
-# this line is added because of a bug in tf_serving(1.10.0-dev)
-img = img.astype('float16')
+img=Image.open(image_path)
+myimg=img.resize((224,224), resample=Image.BILINEAR )
+img = np.asarray(myimg)
+img = img.astype('float32')
 
 payload = {
     "instances": [{'input_image': img.tolist()}]
