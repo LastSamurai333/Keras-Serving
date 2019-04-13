@@ -5,7 +5,6 @@ from io import BytesIO
 import numpy as np
 import requests
 from flask import Flask, request, jsonify
-from keras.applications import inception_v3
 from keras.preprocessing import image
 
 # from flask_cors import CORS
@@ -37,10 +36,18 @@ def image_classifier():
     }
 
     # Making POST request
-    r = requests.post('http://localhost:9000/v1/models/ImageClassifier:predict', json=payload)
+    r = requests.post('http://localhost:1234/v1/models/ImageClassifier:predict', json=payload)
 
     # Decoding results from TensorFlow Serving server
     pred = json.loads(r.content.decode('utf-8'))
+    
+    dict = {}
+    dict['Sleeveless'] = pred['predictions'][0][0]
+    dict['FullSleeve'] = pred['predictions'][0][0]
+    dict['HalfSleeve'] = pred['predictions'][0][0]
+    dict['3/4 Sleeve'] = pred['predictions'][0][0]
+    y = json.dumps(dict)
 
     # Returning JSON response to the frontend
-    return jsonify(inception_v3.decode_predictions(np.array(pred['predictions']))[0])
+    #return jsonify(inception_v3.decode_predictions(np.array(pred['predictions']))[0])
+    return y
