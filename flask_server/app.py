@@ -43,9 +43,9 @@ def image_classifier():
     
     dict = {}
     dict['Sleeveless'] = pred['predictions'][0][0]
-    dict['FullSleeve'] = pred['predictions'][0][0]
-    dict['HalfSleeve'] = pred['predictions'][0][0]
-    dict['3/4 Sleeve'] = pred['predictions'][0][0]
+    dict['FullSleeve'] = pred['predictions'][0][1]
+    dict['HalfSleeve'] = pred['predictions'][0][2]
+    dict['3/4 Sleeve'] = pred['predictions'][0][3]
     y = json.dumps(dict)
 
     # Returning JSON response to the frontend
