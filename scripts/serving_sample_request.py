@@ -16,7 +16,7 @@ image_path = args['image']
 img=Image.open(image_path)
 myimg=img.resize((224,224), resample=Image.BILINEAR )
 img = np.asarray(myimg)
-img = img.astype('float32')
+img = img.astype('float16')
 
 payload = {
     "instances": [{'input_image': img.tolist()}]
