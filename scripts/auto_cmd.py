@@ -7,14 +7,14 @@ import subprocess
 # exec(open(activate_this).read(), dict(__file__=activate_this))
 
 # Change directory to where your Flask's app.py is present
-os.chdir("/home/ubuntu/Desktop/Medium/keras-and-tensorflow-serving/flask_server")
+os.chdir("/content/keras-serving/flask_server")
 tf_ic_server = ""
 flask_server = ""
 
 try:
     tf_ic_server = subprocess.Popen(["tensorflow_model_server "
-                                     "--model_base_path=/home/ubuntu/Desktop/Medium/keras-and-tensorflow-serving/my_image_classifier "
-                                     "--rest_api_port=9000 --model_name=ImageClassifier"],
+                                     "--model_base_path=/content/keras-serving/my_image_classifier "
+                                     "--rest_api_port=1234 --model_name=ImageClassifier"],
                                     stdout=subprocess.DEVNULL,
                                     shell=True,
                                     preexec_fn=os.setsid)
