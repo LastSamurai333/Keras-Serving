@@ -50,4 +50,5 @@ def image_classifier():
 
     # Returning JSON response to the frontend
     #return jsonify(inception_v3.decode_predictions(np.array(pred['predictions']))[0])
-    return y
+    #return y
+    return jsonify(dict)
