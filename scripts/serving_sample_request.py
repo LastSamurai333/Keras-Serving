@@ -27,9 +27,9 @@ r = requests.post('http://localhost:1234/v1/models/ImageClassifier:predict', jso
 pred = json.loads(r.content.decode('utf-8'))
 
 dict['Sleeveless'] = pred['predictions'][0][0]
-dict['FullSleeve'] = pred['predictions'][0][0]
-dict['HalfSleeve'] = pred['predictions'][0][0]
-dict['3/4 Sleeve'] = pred['predictions'][0][0]
+dict['FullSleeve'] = pred['predictions'][0][1]
+dict['HalfSleeve'] = pred['predictions'][0][2]
+dict['3/4 Sleeve'] = pred['predictions'][0][3]
 y = json.dumps(dict)
 
 print (y)
