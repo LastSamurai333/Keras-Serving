@@ -4,7 +4,7 @@ import base64
 
 import requests
 
-API_ENDPOINT = "http://localhost:5000/imageclassifier/predict/"
+API_ENDPOINT = "http://localhost:1234/imageclassifier/predict/"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True,
