@@ -24,8 +24,11 @@ def hello_world():
 @app.route('/imageclassifier/predict/', methods=['POST'])
 def image_classifier():
     # Decoding and pre-processing base64 image
-    img = image.img_to_array(image.load_img(BytesIO(base64.b64decode(request.form['b64'])),
-                                            target_size=(224, 224))) / 255.
+    #img = image.img_to_array(image.load_img(BytesIO(base64.b64decode(request.form['b64'])), target_size=(224, 224))) / 255.
+    image_path = BytesIO(base64.b64decode(request.form['b64']))
+    img=Image.open(image_path)
+    myimg=img.resize((224,224), resample=Image.BILINEAR )
+    img = np.asarray(myimg)
 
     # this line is added because of a bug in tf_serving < 1.11
     img = img.astype('float16')
