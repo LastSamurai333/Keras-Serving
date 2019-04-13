@@ -6,6 +6,7 @@ import numpy as np
 import requests
 from flask import Flask, request, jsonify
 from keras.preprocessing import image
+from PIL import Image
 
 # from flask_cors import CORS
 
